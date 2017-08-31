@@ -16,7 +16,7 @@ volumes:[
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
 ]){
 
-  node ('jenkins-pipeline') {
+  node ('UbuntuNode1') {
 
     def pwd = pwd()
     def chart_dir = "${pwd}/charts/croc-hunter"
@@ -160,7 +160,7 @@ volumes:[
             memory        : config.app.memory,
             hostname      : config.app.hostname
           )
-          
+
           //  Run helm tests
           if (config.app.test) {
             pipeline.helmTest(
